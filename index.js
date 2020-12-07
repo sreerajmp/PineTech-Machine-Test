@@ -26,13 +26,13 @@ const init = async () => {
     server.route({
         method: 'POST',
         path: '/part-1',
-        handler: function (request) {
+        handler: function (request,h) {
 
             //get post params
             const data = request.payload;
 
             //calling recursive function to build tree from JSON
-            tree_format(data);
+            return tree_format(data);
 
             // Rebuilding JSON to tree_format
             function tree_format(data, parent=null){
@@ -63,7 +63,7 @@ const init = async () => {
     server.route({
         method: 'GET',
         path: '/part-2',
-        handler: function (request) {
+        handler: function (request,h) {
 
             const params = request.query
             const host = request.info.host;
